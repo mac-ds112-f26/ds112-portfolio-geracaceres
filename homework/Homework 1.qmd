@@ -52,4 +52,48 @@ tail(survey)
 # it shows the name the variables. 
 names(survey)
 ```
-#Exercise 5: Data Structura
+## Exercise 5: Data Structure
+
+Obtain the overall class of the survey object.
+```{r}
+class(survey)
+```
+
+Examine the structure of each variable within survey (including class)
+```{r}
+str(survey)
+```
+## Exercise 4: Get to know the data
+Import and name the dataset (you pick a name!)
+
+```{r}
+soccer <- read.csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-29/worldcups.csv")
+```
+
+Print the first 6 rows of the dataset
+
+```{r}
+head(soccer)
+```
+
+
+How many years of data do we have? And how many measurements do we have on each year?
+
+```{r}
+dim(soccer)
+```
+
+Get a list of all variable names in the dataset
+```{r}
+names(soccer)
+```
+
+Display the class and other information for each variable in the dataset
+```{r}
+str(soccer)
+```
+## Exercise 7: Brainstorm
+
+- Is attendance to the World Cup increasing over the years?
+- Is there a correlation between the number of games and number of teams?
+- Does attendance depends of which continent the host country is located?
