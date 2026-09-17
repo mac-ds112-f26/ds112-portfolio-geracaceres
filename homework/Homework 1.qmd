@@ -52,3 +52,4 @@ tail(survey)
 # it shows the name the variables. 
 names(survey)
 ```
+#Exercise 5: Data Structura
