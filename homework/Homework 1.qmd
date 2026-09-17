@@ -15,15 +15,40 @@ survey <- read.csv("https://hash-mac.github.io/ds112site-f26/data/survey.csv")
 
 ## Exercise 3: Tidy data properties
 
+What are the units of observation, ie, what does each row represent?
+- Favorite food of Cafe Mac, minutes that people take to arrive at campus, favorite temperature, place where they preferred to hang out. 
+
+- Name one quantitative variable, ie, column, in the dataset.
+Favorite food in Cafe Mac
+
+- Name one categorical variable, ie, column, in the dataset.
+Favorite temperature
 
 ## Exercise 4: Get to know the data
 
+```{r}
+# It shows of rows and columns of the data. 
+dim(survey)
+```
+```{r}
+# It shows the number of rows.
+nrow(survey)
+```
+```{r}
+# It shows the first 6 data.
+head(survey)
+```
 
-## Exercise 5: Data structure
+```{r}
+# It shows the 3 first data. 
+head(survey, 3)
+```
+```{r}
+# It shows the 6 last data.  
+tail(survey)
+```
 
-
-## Exercise 6: Your turn
-
-
-## Exercise 7: Brainstorm
-
+```{r}
+# it shows the name the variables. 
+names(survey)
+```
