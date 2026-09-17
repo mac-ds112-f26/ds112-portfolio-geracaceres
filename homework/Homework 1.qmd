@@ -1,0 +1,29 @@
+---
+title: "Homework 1"
+format: 
+  html: 
+    embed-resources: true
+---
+## Exercise 1: Warming up
+I like *ice cream* and **brownies**. 
+
+## Exercise 2: Import tidy data
+```{r}
+# Import data
+survey <- read.csv("https://hash-mac.github.io/ds112site-f26/data/survey.csv")
+```
+
+## Exercise 3: Tidy data properties
+
+
+## Exercise 4: Get to know the data
+
+
+## Exercise 5: Data structure
+
+
+## Exercise 6: Your turn
+
+
+## Exercise 7: Brainstorm
+
