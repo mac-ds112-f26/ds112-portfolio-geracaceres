@@ -376,8 +376,12 @@ world_cup <- read.csv("https://raw.githubusercontent.com/rfordatascience/tidytue
 #Name of the variables
 names(world_cup)
 
-#Bar graph of winners across the years
+#Bar graph of attendance across the years
 ggplot(world_cup, aes(x = year, y = attendance)) +
+  geom_point()
+
+#Bar graph of relation of goals scored and games.
+ggplot(world_cup, aes(x = games, y = goals_scored)) +
   geom_point()
 
 ```
