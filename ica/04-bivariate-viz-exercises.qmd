@@ -290,7 +290,7 @@ Work through the chunks below and address the comments therein.
 ```{r}
 #| eval: false
 
-# Name two "bad" things about this plot
+# We can't see the complete shapes of the lines. 
 ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
   geom_density()
 ```
@@ -298,7 +298,7 @@ ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
 ```{r}
 #| eval: false
 
-# What does scale_fill_manual do?
+# It change the colors of the density graphs. 
 ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
   geom_density() +
   scale_fill_manual(values = c("blue", "purple", "red"))
@@ -307,10 +307,10 @@ ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
 ```{r}
 #| eval: false
 
-# What does alpha = 0.5 do?
+# it change the saturation of the graphs. 
 # Play around with different values of alpha, between 0 and 1
 ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
-  geom_density(alpha = 0.5) +
+  geom_density(alpha = 0.3) +
   scale_fill_manual(values = c("blue", "purple", "red"))
 ```
 
@@ -340,8 +340,11 @@ ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
 We've now learned 3 (of many) ways to visualize the relationship between a quantitative and categorical variable: side-by-side violins, boxplots, and density plots.
 
 -   Which do you like best?
+  I really like the density plots in three windows because it allows to compare three categorical variables in a clear and organizing way. 
 -   What is one pro of density plots relative to boxplots?
+    You have a clear vision of the tendency of the data. You don't need previous experience in statistics to make rational conclusions as you need for box plots. 
 -   What is one con of density plots relative to boxplots?
+  You have an specific vision of the spread of the data in each variable and you can compare with others. Conclusions can be more specific. 
 
 
 ## Exercise 11: Categorical vs Categorical: Intuition Check
@@ -360,14 +363,14 @@ Spend at most 5 minutes on the following intuition check. Adjust the code below 
 
 ```{r}
 # Plot 1: adjust this to recreate the top plot
-ggplot(elections, aes(x = historical)) +
-  geom_bar()
+ggplot(elections, aes(x = historical, fill = winner_20)) +
+  geom_bar() 
 ```
-
 ```{r}
 # Plot 2: adjust this to recreate the bottom plot
 ggplot(elections, aes(x = winner_20)) +
-  geom_bar()
+  geom_bar() +
+  facet_wrap(~ winner_20)
 ```
 
 
