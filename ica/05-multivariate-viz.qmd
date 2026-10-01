@@ -71,7 +71,7 @@ They have a negative correlation meaning that everytime salary increase, SAT sco
 Construct *one* visualization of the relationship of `sat` with `salary` *and* `expend`. HINT: Start with just 2 variables and tweak that code to add the third variable. Try out a few things!
 
 ```{r}
-ggplot(aes(y=sat, x=salary, color=expend))+
+ggplot(education, aes(y=sat, x=salary, color=expend))+
   geom_point()
 ```
 
@@ -84,15 +84,15 @@ It can be tough to distinguish color scales and size scales for quantitative var
 Construct the plot below. Check out the code and think about what's happening here. What happens if you change "2" to "3"?
 
 ```{r}
-ggplot(education, aes(y = sat, x = salary, color = cut(expend, 2))) + 
+ggplot(education, aes(y = sat, x = salary, color = cut(expend, 3))) + 
   geom_point() + 
   geom_smooth(se = FALSE, method = "lm")
 ```
 
 ### ✏️ Describe Trivariate Relationship
 
-Describe the trivariate relationship between `sat`, `salary`, and `expend`.
-
+Describe the trivariate relationship between `sat`, `salary`, and `expend`. 
+We can see that states that have more education expenditure, the relationship between teacher salary and SAT score is positive compared. For states with low investment in education, the relationship is negative. 
 
 ## Simpson's Paradox
 
@@ -103,7 +103,8 @@ It's strange that SAT scores *seem* to decrease with spending. But we're leaving
 Build a univariate viz of `fracCat` to better understand how many states fall into each category.
 
 ```{r}
-
+ggplot(education, aes(x=fracCat)) +
+  geom_bar()
 ```
 
 ### ✏️ Relate SAT to Participation
@@ -111,7 +112,12 @@ Build a univariate viz of `fracCat` to better understand how many states fall in
 Build 2 bivariate visualizations that demonstrate the relationship between `sat` and `fracCat`. What story does your graphic tell and why does this make contextual sense?
 
 ```{r}
+ggplot(education, aes(y=sat, x=fracCat)) + 
+    geom_boxplot()
 
+ggplot(education, aes(y=sat, fill=fracCat)) + 
+    geom_histogram()
+    
 ```
 
 ### ✏️ Add Participation to Spending Plot
@@ -120,7 +126,7 @@ Make a trivariate visualization that demonstrates the relationship of `sat` with
 Does it still seem that SAT scores decrease as spending increases?
 
 ```{r}
-
+ggplot(education, aes(x=expend, y=sat, color=fracCat)) + geom_point()
 ```
 
 ### ✏️ Explain Simpson's Paradox
@@ -151,7 +157,7 @@ Run the chunks below. Check out the code, but don't worry about every little det
 # Remove the "State" column and use it to label the rows
 # Then scale the variables
 plot_data <- education |> 
-  column_to_rownames("State") |> 
+  column_to_rownames("Minnesota") |> 
   data.matrix() |> 
   scale()
 
