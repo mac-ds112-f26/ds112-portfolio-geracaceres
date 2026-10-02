@@ -126,12 +126,14 @@ Make a trivariate visualization that demonstrates the relationship of `sat` with
 Does it still seem that SAT scores decrease as spending increases?
 
 ```{r}
-ggplot(education, aes(x=expend, y=sat, color=fracCat)) + geom_point()
+ggplot(education, aes(x=expend, y=sat, color=fracCat)) + geom_point() +
+  geom_smooth(method = "lm", se=FALSE)
 ```
 
 ### ✏️ Explain Simpson's Paradox
 
 Putting all of this together, explain this example of **Simpson’s Paradox**. That is, why did it appear that SAT scores decrease as spending increases even though the *opposite* is true?
+
 
 
 
@@ -155,9 +157,10 @@ Run the chunks below. Check out the code, but don't worry about every little det
 #| eval: false
 
 # Remove the "State" column and use it to label the rows
-# Then scale the variables
+# Then scale the variable
+library(tidyverse)
 plot_data <- education |> 
-  column_to_rownames("Minnesota") |> 
+  column_to_rownames("State") |> 
   data.matrix() |> 
   scale()
 
