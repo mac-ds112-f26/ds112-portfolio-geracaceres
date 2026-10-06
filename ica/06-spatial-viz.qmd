@@ -613,10 +613,12 @@ ggplot(elections_by_counties, aes(map_id = county_fips, fill = repub_20_categori
 Construct a county-level map of `median_rent`.
 
 ```{r}
-ggplot(elections_by_counties, aes(map_id = state_name, fill = median_rent)) +
-  geom_map(map = states_map) +
-  expand_limits(x = states_map$long, y = states_map$lat) +
-  theme_map() 
+ggplot(elections_by_counties, aes(map_id = county_fips, fill = median_rent)) +
+  geom_map(map = county_map) +
+  expand_limits(x = county_map$long, y = county_map$lat) +
+  theme_map() +
+  coord_equal() +
+  scale_fill_gradientn(name = "median rent", colors = c("white", "lightgreen", "darkgreen"))
 ```
 
 
@@ -625,7 +627,14 @@ ggplot(elections_by_counties, aes(map_id = state_name, fill = median_rent)) +
 Construct a county-level map of `median_age`.
 
 ```{r}
-
+ggplot(elections_by_counties, aes(map_id = county_fips, fill = median_age)) +
+  geom_map(map = county_map) +
+  expand_limits(x = county_map$long, y = county_map$lat) +
+  theme_map() +
+  theme(legend.position = "right") + 
+  coord_equal() + 
+  scale_fill_gradientn(name = "median age", colors = terrain.colors(20))
+  
 ```
 
 ### ✏️ Build Choropleth with Leaflet
