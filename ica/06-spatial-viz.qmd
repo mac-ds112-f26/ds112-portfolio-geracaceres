@@ -59,6 +59,15 @@ Earlier this semester, I asked for the latitude and longitude of one of your fav
 I rounded these to the nearest whole number, so that they're near to but not exactly at those places.
 Let's load [the data](../data/our_fave_places.csv) and map it!
 
+```{r}
+# Load required libraries
+library(tidyverse)
+library(openintro)
+library(ggplot2)
+library(maps)
+library(ggthemes)
+```
+
 
 ```{r}
 #| edevtools::install_github("ropensci/rnaturalearthhires")val: false
@@ -131,7 +140,7 @@ library(gplots)
 # We can add colored circles instead of markers at each location
 leaflet(data = fave_places) |> 
   addTiles() |> 
-  addCircles(color = "red")
+  addCircles(color = "blue")
 ```
 
 ```{r}
@@ -175,13 +184,18 @@ Let's focus on only those in Minnesota for now:
 
 ```{r}
 # Don't worry about the syntax
-starbucks_mn <- starbucks |>   
+  starbucks_mn <- starbucks |>   
   filter(Country == "US", State.Province == "MN")
 ```
 
 Create a leaflet map of the Starbucks locations in Minnesota.
 Keep it simple -- go back to ✏️ Map Points with Leaflet for an example.
 
+```{r}
+leaflet(data = starbucks_mn) |>
+  addTiles() |>
+  addMarkers()
+```
 
 
 ## Static Points
@@ -345,16 +359,16 @@ Adjust the code below to make the plot!
 Remove the `#` to run it.
 
 ```{r}
-# ggplot(___) + 
-#   geom___() + 
-#   geom___(
-#     data = ___,
-#     aes(x = ___, y = ___),
-#     alpha = 0.7,
-#     size = 0.2, 
-#     color = 'darkgreen'
-#   ) + 
-#   theme_map()
+ggplot(midwest_boundaries) +
+  geom_sf() +
+  geom_point(
+    data = starbucks_midwest,
+    aes(x = Longitude, y = Latitude),
+    alpha = 0.7,
+    size = 0.3,
+    color = 'darkgreen'
+  ) +
+  theme_map()
 ```
 
 ### ✏️ Build Contour Maps
@@ -599,7 +613,10 @@ ggplot(elections_by_counties, aes(map_id = county_fips, fill = repub_20_categori
 Construct a county-level map of `median_rent`.
 
 ```{r}
-
+ggplot(elections_by_counties, aes(map_id = state_name, fill = median_rent)) +
+  geom_map(map = states_map) +
+  expand_limits(x = states_map$long, y = states_map$lat) +
+  theme_map() 
 ```
 
 
